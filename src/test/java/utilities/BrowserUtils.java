@@ -218,6 +218,10 @@ public class BrowserUtils {
     	Driver.getDriver().findElement(chooseFileButton).sendKeys(pathToAFileToBeUploaded);
     }
     
+    public static void jsClick(WebElement element) {
+    	JavascriptExecutor js = (JavascriptExecutor)Driver.getDriver();
+    	js.executeScript("arguments[0].click();", element);
+    }
     
     
     
