@@ -71,4 +71,51 @@ public class KaterinaBookingPage {
 	@FindBy(id = "btn-book-submit")
 	public WebElement submitButton;
 	
+	@FindBy(xpath="//a[@class='icon-help booking-help circle-outline searchOptionHelpIcon order-2']")
+	public WebElement milesQuestionMark;
+	
+	@FindBy (xpath="//h4[@class='title']")
+	public WebElement messageTitle;
+
+	@FindBy(id = "chkFlexDate")
+	public WebElement checkFlexDateBox;
+
+	@FindBy (className = "resetButton")
+	public WebElement clearDatesButton;
+	
+	@FindBy(className = "calenderDepartSpan")
+	public WebElement clearDepartDate;
+	
+	@FindBy(className = "calenderReturnSpan")
+	public WebElement clearReturnDate;
+
+	@FindBy(id = "shopWithMiles" )
+	public WebElement checkShopMilesBox;
+
+	@FindBy(id = "refundableFlightsOnly" )
+	public WebElement checkRefundFaresBox;
+	
+	@FindBy(id = "adv-search")
+	public WebElement advanceSearch;
+	
+	@FindBy(xpath = "//a[@class='best-fares-help icon-help circle-outline ng-star-inserted']")
+	public WebElement faresQuestionMark;
+	
+	@FindBy(id = "search-error")
+	public WebElement searchError;
+
+	@FindBy(xpath = "//a[@class='swapfield d-inline-block icon-swap']")
+	public WebElement swapButton;
+
+	@FindBy(xpath = "//input[@id='nearbyAirports']")
+	public WebElement nearbyAirports;
+
+	@FindBy(className = "continue-link" )
+	public WebElement errorPopMessage;
+	
+	@FindBy (xpath = "//a[@class='notification icon-notification-icon circle-outline']") //Rod
+	public WebElement notificationIcon;
+	
+	
+	
 }

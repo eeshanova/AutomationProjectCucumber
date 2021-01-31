@@ -2,10 +2,10 @@ package step_definitions;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -75,7 +75,7 @@ public class KaterinaStepDefs {
 	    
 	}
 
-	@When("Chooses the departure date and clicks on submit")
+	@When("The user chooses the departure date and clicks on submit")
 	public void chooses_the_departure_date_and_clicks_on_submit() {
 		KaterinaBookingPage bp = new KaterinaBookingPage();
 		bp.calendarWindow.click();
@@ -87,12 +87,127 @@ public class KaterinaStepDefs {
 	    
 	}
 
-	@Then("The results page displays {string} in the header")
+	@Then("The results page contains {string} flights")
 	public void the_results_page_displays_in_the_header(String string) {
 		KaterinaResultsPage rp = new KaterinaResultsPage();
 		BrowserUtils.waitForPageToLoad(15);
-		assertTrue(rp.headingInfo.getText().contains(string));
+//		String actualOneWay = rp.headingInfo.getText();
+		assertTrue(Driver.getDriver().getPageSource().contains(string));
 	    
 	}
+	
+	@When("The user clicks on question mark next to Shopping with Miles")
+	public void theUserClicksOnQuestionMarkNextToShoppingWithMiles() {
+		
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		bp.milesQuestionMark.click();
+	    
+	}
+
+	@Then("The pop up window comes up with Info")
+	public void thePopUpWindowComesUpWithInfo() {
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		assertEquals(bp.messageTitle.getText(), "Shop with Miles");
+	}
+	
+	@When("The user clicks and types {string} as from Airport and {string} as to Airport")
+	public void theUserClicksAndTypesAnd(String fromAirport, String toAirport) {
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		BrowserUtils.waitForPageToLoad(10);
+	    bp.fromAirport.sendKeys(fromAirport);
+	    BrowserUtils.waitFor(3);
+	    bp.searchWindow.click();
+	    for (WebElement elementFrom: bp.cityFullNameOptions) {
+
+			if(elementFrom.getText().contains(fromAirport)) {
+			elementFrom.click();
+			break;
+			}
+		}
+	    
+	    bp.toAirport.sendKeys(toAirport);
+		 BrowserUtils.waitFor(3);
+			bp.searchWindow.click();
+			
+				for (WebElement elementTo: bp.cityFullNameOptions) {
+				if(elementTo.getText().contains(toAirport)) {
+				elementTo.click();
+				break;
+				}
+			}
+	    
+	}
+
+	@When("The user chooses {string} , {string} for departure and {string} , {string} for return")
+	public void theUserChoosesAnd(String deptMonth, String deptDate, String arrMonth, String arrDate) {
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		bp.calendarWindow.click();
+		
+		bp.pickMonth(deptMonth);
+		bp.getDateMonth(deptDate + " ", deptMonth).click();
+	
+		bp.pickMonth(arrMonth);
+		bp.getDateMonth(arrDate + " ", arrMonth).click();
+		bp.doneButton.click();
+		
+	    
+	}
+
+	@When("The user clicks on My dates are flexible box and clicks on submit")
+	public void theUserClicksOnMyDatesAreFlexibleBoxAndClicksOnSubmit() {
+
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		
+		if(!(bp.checkFlexDateBox).isSelected()) {
+			BrowserUtils.jsClick(bp.checkFlexDateBox);				
+			}
+		
+		BrowserUtils.waitFor(3);
+		bp.submitButton.submit();
+	    
+	}
+
+	@Then("The results page contains {string}")
+	public void theResultsPageContains(String string) {
+		KaterinaResultsPage rp = new KaterinaResultsPage();
+		BrowserUtils.waitForPageToLoad(15);
+		String actualText = rp.headingFlexibleDates.getText();
+		assertEquals(actualText,string);
+	}
+
+	@Then("The user clicks on clear button in the calendar window to clear the dates")
+	public void theUserClicksOnClearButtonInTheCalendarWindowToClearTheDates() {
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		bp.calendarWindow.click();
+		bp.clearDatesButton.click();
+		bp.doneButton.click();
+		assertTrue(bp.clearDepartDate.getText().equals("Depart"));
+		assertTrue(bp.clearReturnDate.getText().equals("Return"));
+		
+	   
+	}
+	
+	@When("The user clicks on Shopping with Miles check box")
+	public void theUserClicksOnShoppingWithMilesCheckBox() {
+		
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		
+		if(!(bp.checkShopMilesBox).isSelected()) {
+			BrowserUtils.jsClick(bp.checkShopMilesBox);				
+			}
+		
+		BrowserUtils.waitFor(3);
+	   
+	}
+
+	@Then("The Refundable Fares and My dates are flexible checkboxes are not selectable")
+	public void theRefundableFaresAndMyDatesAreFlexibleCheckboxesAreNotSelectable() {
+		
+		KaterinaBookingPage bp = new KaterinaBookingPage();
+		assertTrue(!bp.checkFlexDateBox.isEnabled());
+		assertTrue(!bp.checkRefundFaresBox.isEnabled());
+	}
+
+
 
 }

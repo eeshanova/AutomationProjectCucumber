@@ -14,4 +14,6 @@ public class KaterinaResultsPage {
 	@FindBy (css = "span[class='headingintro']") 
 	public WebElement headingInfo;
 	
+	@FindBy (xpath="//a[@id='tab0']") 
+	public WebElement headingFlexibleDates;
 }
