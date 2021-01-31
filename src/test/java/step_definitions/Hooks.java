@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +17,7 @@ import utilities.Driver;
 public class Hooks {
 	
 		protected WebDriver driver;
-				
+	
 		@Before 
 		public void setupMethod() {
 			String browser = ConfigReader.getProperty("browser");
@@ -26,6 +27,9 @@ public class Hooks {
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
 			driver.get(ConfigReader.getProperty("url"));
+			///this part down below for Katya to scroll homepage
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(0,3000)");
 		
 		}
 		
