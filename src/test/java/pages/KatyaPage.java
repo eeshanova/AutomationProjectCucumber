@@ -1,13 +1,10 @@
 package pages;
 
 import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utilities.BrowserUtils;
 import utilities.Driver;
 public class KatyaPage {
 	
@@ -29,15 +26,12 @@ public class KatyaPage {
 	
 	@FindBy(xpath = "//button[@class='cookie-close-icon float-right circle-outline']")
 	public WebElement cookieClose;
-	
+
 	@FindBy (xpath = "//ul[@class='d-none d-md-block']/li[3]/a[contains(text(),'News Hub')]")
 	public WebElement newsHub;
 	
 	@FindBy (xpath = "//h3[@class='block-title'][contains(text(),'Featured News')]")
 	public WebElement fNews;
-	
-	@FindBy(className = "h1")
-	public WebElement pageMessage;
 	
 	@FindBy (xpath = "//ul[@class='d-none d-md-block']/li/a")
 	public List<WebElement> footerLinks;

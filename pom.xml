@@ -99,6 +99,7 @@
                     <includes>
                    <!--  --> name of your Runner class-->
                     <include>**/*CukeRunner.java</include>
+                    <include>**/*FailedScenariosRunner.java</include>
                     </includes>
                                           
                 </configuration>             
@@ -115,7 +116,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>E-commerce Project</projectName>
+                            <projectName>Delta Project</projectName>
                             
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}/pretty-html-report</outputDirectory>

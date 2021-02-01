@@ -30,7 +30,7 @@ Feature: Checking Booking Module
       When The user clicks on submit button
       Then The error message "please correct the 2 items indicated" pops up
      
-     @temp
+     @dilmurod
     Scenario: Verify Search Page title
 	Given The User is on the homepage
 	When The user clicks on a notificaiton icon

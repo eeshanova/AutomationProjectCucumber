@@ -16,7 +16,7 @@ import utilities.Driver;
 public class Hooks {
 	
 		protected WebDriver driver;
-				
+	
 		@Before 
 		public void setupMethod() {
 			String browser = ConfigReader.getProperty("browser");

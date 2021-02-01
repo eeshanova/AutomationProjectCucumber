@@ -87,13 +87,17 @@ public class KaterinaStepDefs {
 	    
 	}
 
-	@Then("The results page contains {string} flights")
+	@Then("The results page contains {string}")
 	public void the_results_page_displays_in_the_header(String string) {
-		KaterinaResultsPage rp = new KaterinaResultsPage();
-		BrowserUtils.waitForPageToLoad(15);
-//		String actualOneWay = rp.headingInfo.getText();
+		BrowserUtils.waitForTitleContains("Flexible Date Flight Result : Find & Book Airline Tickets : Delta Air Lines", 10);
 		assertTrue(Driver.getDriver().getPageSource().contains(string));
 	    
+	}
+	
+	@Then("The results page contains {string} flights")
+	public void theResultsPageContainsFlights(String string) {
+		BrowserUtils.waitForTitleContains("Flight Results : Find & Book Airline Tickets : Delta Air Lines", 10);
+		assertTrue(Driver.getDriver().getPageSource().contains(string));
 	}
 	
 	@When("The user clicks on question mark next to Shopping with Miles")
@@ -167,13 +171,6 @@ public class KaterinaStepDefs {
 	    
 	}
 
-	@Then("The results page contains {string}")
-	public void theResultsPageContains(String string) {
-		KaterinaResultsPage rp = new KaterinaResultsPage();
-		BrowserUtils.waitForPageToLoad(15);
-		String actualText = rp.headingFlexibleDates.getText();
-		assertEquals(actualText,string);
-	}
 
 	@Then("The user clicks on clear button in the calendar window to clear the dates")
 	public void theUserClicksOnClearButtonInTheCalendarWindowToClearTheDates() {
@@ -187,7 +184,7 @@ public class KaterinaStepDefs {
 	   
 	}
 	
-	@When("The user clicks on Shopping with Miles check box")
+	@When("The user clicks on Shopping with Miles checkbox")
 	public void theUserClicksOnShoppingWithMilesCheckBox() {
 		
 		KaterinaBookingPage bp = new KaterinaBookingPage();
@@ -208,6 +205,22 @@ public class KaterinaStepDefs {
 		assertTrue(!bp.checkRefundFaresBox.isEnabled());
 	}
 
-
-
+	@Then("The user clicks on Advanced Search and the {string} is not visible")
+	public void theUserClicksOnAdvancedSearchAndTheIsNotVisible(String string) {
+	    KaterinaBookingPage bp = new KaterinaBookingPage();
+	    bp.advanceSearch.click();
+	    assertTrue(!(Driver.getDriver().getPageSource()).contains(string));
+	}
+	
+	@When("The user clicks on My dates are flexible checkbox")
+	public void theUserClicksOnMyDatesAreFlexiblesCheckbox() {
+KaterinaBookingPage bp = new KaterinaBookingPage();
+		
+		if(!(bp.checkFlexDateBox).isSelected()) {
+			BrowserUtils.jsClick(bp.checkFlexDateBox);				
+			}
+		
+		BrowserUtils.waitFor(3);
+	}
 }
+

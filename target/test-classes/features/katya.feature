@@ -5,6 +5,7 @@ Feature: Verification of Website Footer Module
       When The user clicks on eCredits and types random number
       And The user clicks on Look Up
       Then The user should receive error message "To continue, please correct the"
+      
    @kate
    Scenario: Verify response when press "News Hub" link
       Given The User is on the homepage
@@ -37,3 +38,5 @@ Feature: Verification of Website Footer Module
       When The user clicks on "Business Travel"
       And The user clicks on Meeting Services  
       Then Verify if page title is "Meeting Services : Delta Air Lines"
+   
+

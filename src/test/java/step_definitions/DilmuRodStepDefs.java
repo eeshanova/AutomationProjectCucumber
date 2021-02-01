@@ -3,6 +3,7 @@ package step_definitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.KaterinaBookingPage;
@@ -10,6 +11,11 @@ import utilities.BrowserUtils;
 import utilities.Driver;
 
 public class DilmuRodStepDefs {
+	
+//	@Given("The User is on the homepage")
+//	public void theUserIsOnTheHomepage() {
+//		
+//	}
 	
 	@When("The user expands Advanced Search and clicks on question mark next to Basic Fares For")
 	public void theUserExpandsAdvancedSearchAndClicksOnQuestionMarkNextToBasicFaresFor() {

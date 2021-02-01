@@ -115,7 +115,10 @@ public class KaterinaBookingPage {
 	
 	@FindBy (xpath = "//a[@class='notification icon-notification-icon circle-outline']") //Rod
 	public WebElement notificationIcon;
-	
+
+	@FindBy(id = "meetingCode")
+	public WebElement eventCode;
+		
 	
 	
 }

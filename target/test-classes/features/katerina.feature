@@ -28,7 +28,7 @@ Feature: Booking Functionality
       When The user clicks and types "Atlanta" as from Airport and "Salt Lake City" as to Airport
       And The user chooses "March" , "1" for departure and "April" , "15" for return
       And The user clicks on My dates are flexible box and clicks on submit
-      Then The results page contains "Flexible Dates"
+      Then The results page contains "Flexible Date"
       
     @katerina
    	Scenario: Verify that the dates can be cleared in the calendar
@@ -40,6 +40,18 @@ Feature: Booking Functionality
      @katerina
   	Scenario: Verify that if Shopping with Miles checkbox is selected then the other two are not selectable
       Given The User is on the homepage
-      When The user clicks on Shopping with Miles check box
+      When The user clicks on Shopping with Miles checkbox
       Then The Refundable Fares and My dates are flexible checkboxes are not selectable
+     
+     @katerina
+   	Scenario: Verify that if Shopping with Miles checkbox is selected then Event Code is not visible
+      Given The User is on the homepage
+      When The user clicks on Shopping with Miles checkbox
+      Then The user clicks on Advanced Search and the "MEETING EVENT CODE" is not visible
+      
+     @katerina
+    Scenario: Verify that if My dates are flexible checkbox is selected then Show Fares is not visible
+      Given The User is on the homepage
+      When The user clicks on My dates are flexible checkbox
+      Then The user clicks on Advanced Search and the "SHOW FARES" is not visible
       
